@@ -17,7 +17,7 @@ open class URThemeAttrsDelegate(
 
     protected val context = view.context
 
-    private var theme: Int = URTheme.THEME_LIGHT
+    private var theme: Int = URTheme.THEME_EMPTY
 
     private var darkBackground: Drawable? = null
     private var lightBackground: Drawable? = null
@@ -44,6 +44,9 @@ open class URThemeAttrsDelegate(
     }
 
     override fun onThemeChanged(theme: Int) {
+        if (this.theme == theme) {
+            return
+        }
         this.theme = theme
         when (theme) {
             URTheme.THEME_LIGHT -> {

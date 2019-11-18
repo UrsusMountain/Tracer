@@ -2,6 +2,8 @@ package com.ursus.base.app.theme
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 
@@ -17,9 +19,8 @@ abstract class URThemeActivity : FragmentActivity(), URThemeOwner {
 
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
-        URTheme.bindURThemeView(getURTheme(), window.decorView.findViewById<View>(android.R.id.content))
+        bindURTheme(window.decorView.findViewById<View>(android.R.id.content))
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -45,11 +46,23 @@ abstract class URThemeActivity : FragmentActivity(), URThemeOwner {
         }
     }
 
-    fun setDarkNVTheme(isDark: Boolean) {
+    protected fun bindURTheme(view : View) {
+        URTheme.bindURThemeView(getURTheme(), view)
+    }
+
+    fun setDarkURTheme(isDark: Boolean) {
         setURThemeValue(if (isDark) URTheme.THEME_DARK else URTheme.THEME_LIGHT)
     }
 
+    fun isDarkURTheme() = getURTheme().getValue() == URTheme.THEME_DARK
+
     open fun onThemeChange(theme: Int) {}
+
+    open fun createView(@LayoutRes resource: Int, root: ViewGroup?): View {
+        val view = layoutInflater.inflate(resource, root, false)
+        bindURTheme(view)
+        return view
+    }
 
     open fun initNVTheme(): Int {
         return URTheme.THEME_LIGHT

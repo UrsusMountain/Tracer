@@ -1,4 +1,7 @@
 package com.ursus.base.app
 
-class URBaseActivity {
+import com.ursus.base.app.theme.URThemeActivity
+
+class URBaseActivity : URThemeActivity() {
+
 }
