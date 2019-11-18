@@ -3,14 +3,14 @@ package com.ursus.base.app.theme.view
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.widget.RelativeLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.ursus.base.app.theme.URThemeObserver
 
-class URThemeRelativeLayout @JvmOverloads constructor(
+class URThemeConstraintLayout @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr), URThemeObserver, URDarkBackground {
+) : ConstraintLayout(context, attrs, defStyleAttr), URThemeObserver, URDarkBackground {
 
     private val themeAttrsDelegate = URThemeAttrsDelegate(this, attrs)
 

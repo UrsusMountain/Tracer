@@ -1,6 +1,5 @@
 package com.ursus.base.app.theme.view
 
-import android.content.res.TypedArray
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -24,24 +23,22 @@ open class URThemeAttrsDelegate(
 
 
     init {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.URDarkTheme)
-        initAttrs(a)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.URDarkTheme_Background)
+        darkBackground = a.getDrawable(R.styleable.URDarkTheme_Background_ur_dark_background)
+            ?: getDefaultBackground()
+        lightBackground = view.background
         a.recycle()
     }
 
-    open protected fun initAttrs(a: TypedArray) {
-        darkBackground = a.getDrawable(R.styleable.URDarkTheme_ur_dark_background)
-            ?: ColorDrawable(ContextCompat.getColor(context, R.color.window_background_dark))
-        lightBackground = view.background
-    }
-
     open protected fun onUpdateDarkTheme() {
-        view.background = lightBackground
+        view.background = darkBackground
     }
 
     open protected fun onUpdateLightTheme() {
-        view.background = darkBackground
+        view.background = lightBackground
     }
+
+    open protected fun getDefaultBackground() = ColorDrawable(ContextCompat.getColor(context, R.color.window_background_dark))
 
     override fun onThemeChanged(theme: Int) {
         if (this.theme == theme) {

@@ -3,9 +3,7 @@ package com.ursus.base.app.theme.view
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
-import com.ursus.base.app.theme.URTheme
 import com.ursus.base.app.theme.URThemeObserver
 
 class URThemeLinearLayout @JvmOverloads constructor(

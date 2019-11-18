@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ursus.base.app.theme.view.URThemeConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".developer.DeveloperActivity">
+
+    <com.ursus.base.app.theme.view.URThemeTextView
+        android:id="@+id/tv_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <com.ursus.base.app.theme.view.URThemeSwitch
+        android:id="@+id/sw_theme"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="夜间模式"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:background="#22000000"
+        app:ur_dark_background="#22FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</com.ursus.base.app.theme.view.URThemeConstraintLayout>

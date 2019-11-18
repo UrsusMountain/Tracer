@@ -4,14 +4,15 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.widget.TextView
+import android.widget.Switch
 import com.ursus.base.app.theme.URThemeObserver
 
-class URThemeTextView @JvmOverloads constructor(
+class URThemeSwitch @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = android.R.attr.textViewStyle
-) : TextView(context, attrs, defStyleAttr), URThemeObserver, URDarkBackground, URDarkTextColor {
+    defStyleAttr: Int = android.R.attr.switchStyle,
+    defStyleRes: Int = 0
+) : Switch(context, attrs, defStyleAttr, defStyleRes), URThemeObserver, URDarkBackground, URDarkTextColor {
 
     private val textAttrsDelegate = URTextViewAttrsDelegate(this, attrs)
 

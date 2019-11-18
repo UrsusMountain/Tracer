@@ -1,14 +1,14 @@
 package com.ursus.base.app.theme.view
 
 import android.content.res.ColorStateList
-import android.content.res.TypedArray
+import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.ursus.base.R
 import com.ursus.base.app.theme.URTheme
 
-class URTextViewAttrsDelegate(
+open class URTextViewAttrsDelegate(
     private val textView: TextView,
     attrs: AttributeSet? = null
 ) : URThemeAttrsDelegate(textView, attrs), URDarkTextColor {
@@ -16,11 +16,12 @@ class URTextViewAttrsDelegate(
     private var darkTextColor: ColorStateList? = null
     private var lightTextColor: ColorStateList? = null
 
-    override fun initAttrs(a: TypedArray) {
-        super.initAttrs(a)
-        darkTextColor = a.getColorStateList(R.styleable.URDarkTheme_ur_dark_textColor)
+    init {
+        val a = context.obtainStyledAttributes(attrs, R.styleable.URDarkTheme_TextView)
+        darkTextColor = a.getColorStateList(R.styleable.URDarkTheme_TextView_ur_dark_textColor)
             ?: getDefaultDarkTextColor()
         lightTextColor = textView.textColors
+        a.recycle()
     }
 
     override fun onUpdateDarkTheme() {
@@ -43,6 +44,8 @@ class URTextViewAttrsDelegate(
     override fun setDarkTextColor(color: Int) {
         setDarkTextColor(ColorStateList.valueOf(color))
     }
+
+    override fun getDefaultBackground() = ColorDrawable(ContextCompat.getColor(context, android.R.color.transparent))
 
     fun getDarkTextColor() = darkTextColor ?: getDefaultDarkTextColor()
 
