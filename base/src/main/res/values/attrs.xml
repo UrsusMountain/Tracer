@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dark theme -->
+    <declare-styleable name="URDarkTheme">
+        <attr name="ur_dark_textColor" format="reference|color" />
+        <attr name="ur_dark_background" format="reference|color" />
+    </declare-styleable>
+</resources>
