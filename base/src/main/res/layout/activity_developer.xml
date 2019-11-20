@@ -10,22 +10,23 @@
         android:id="@+id/tv_device"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:gravity="center"
+        android:text="Copyright © 2019-2020 Ursus \n All Rights Reserved"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.95" />
 
     <com.ursus.base.app.theme.view.URThemeSwitch
         android:id="@+id/sw_theme"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="46dp"
         android:text="夜间模式"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:background="#22000000"
-        app:ur_dark_background="#22FFFFFF"
+        android:background="@android:color/white"
+        app:ur_dark_background="#1AFFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"/>
 
