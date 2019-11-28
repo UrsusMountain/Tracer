@@ -22,10 +22,11 @@ abstract class URThemeActivity : FragmentActivity(), URThemeOwner {
         bindURTheme(window.decorView.findViewById<View>(android.R.id.content))
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         if (delayNotifyThemeChanged) {
             delayNotifyThemeChanged = false
+            urTheme.setValue(urTheme.getValue())
             onThemeChange(urTheme.getValue())
         }
     }
@@ -38,8 +39,8 @@ abstract class URThemeActivity : FragmentActivity(), URThemeOwner {
     override fun getURTheme(): URTheme = urTheme
 
     override fun setURThemeValue(value: Int) {
-        urTheme.setValue(value)
-        if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+        if (lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+            urTheme.setValue(value)
             onThemeChange(value)
         } else {
             delayNotifyThemeChanged = true
@@ -56,15 +57,15 @@ abstract class URThemeActivity : FragmentActivity(), URThemeOwner {
 
     fun isDarkURTheme() = getURTheme().getValue() == URTheme.THEME_DARK
 
-    open fun onThemeChange(theme: Int) {}
-
     open fun createView(@LayoutRes resource: Int, root: ViewGroup?): View {
         val view = layoutInflater.inflate(resource, root, false)
         bindURTheme(view)
         return view
     }
 
-    open fun initNVTheme(): Int {
-        return URTheme.THEME_LIGHT
-    }
+    open fun initNVTheme() = URTheme.THEME_LIGHT
+
+    open fun onThemeChange(theme: Int) {}
+
+
 }

@@ -3,8 +3,8 @@ package com.ursus.base.utils
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.util.Log
 import com.ursus.base.app.IApplication
+import com.ursus.base.log.Log
 
 object ManifestUtils {
 

@@ -1,8 +1,8 @@
 package com.ursus.media
 
 import android.content.Context
-import android.util.Log
 import com.ursus.base.app.IApplication
+import com.ursus.base.log.Log
 
 class MediaApplication : IApplication {
 
