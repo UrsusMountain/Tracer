@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 
-open abstract class URThemeFragment : Fragment(), URThemeOwner {
+abstract class URThemeFragment : Fragment(), URThemeOwner {
 
     private val urTheme: URTheme = URTheme()
     private var nvThemeObserver: URThemeObserver? = null

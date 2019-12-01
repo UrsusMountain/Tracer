@@ -2,9 +2,11 @@ package com.ursus.base.app
 
 import android.content.Context
 import android.content.ContextWrapper
+import com.ursus.base.service.URService
 
 interface URContext {
     fun getContext(): Context
+    fun getService(key: String) : URService
 }
 
 
